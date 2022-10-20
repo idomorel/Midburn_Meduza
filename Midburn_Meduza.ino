@@ -1,3 +1,16 @@
+/*
+Author: Ido Morel
+
+Probably last version of this code for now since project was presented already
+Might make improvements for next year.
+TODO:
+add limit switch to make sure no manual timing is needed.
+*/
+
+
+
+
+
 #include <YK04_Module.h>
 #include <Servo.h>
 
@@ -69,7 +82,7 @@ void loop()
     {
       // digitalWrite(in1, LOW);
       // digitalWrite(in2, HIGH);
-      analogWrite(motor, (val * -1) - 20);
+      //analogWrite(motor, (val * -1) - 20);
       worm.writeMicroseconds(val + 200);
     }
     else
@@ -108,16 +121,16 @@ void loop()
     // rn = millis();
     // attachInterrupt(digitalPinToInterrupt(startB), control, RISING);
     Serial.println(digitalRead(startB));
-    if (millis() < last + 5000)
+    if (millis() < last + 3000)
     {
       // analogWrite(motor, 210);
-      worm.writeMicroseconds(1800);
+      worm.writeMicroseconds(1700);
       Serial.println("Main RIGHT");
     }
-    else if (millis() < last + 7500)
+    else if (millis() < last + 6250)
     {
       // analogWrite(motor, 100);
-      worm.writeMicroseconds(1200);
+      worm.writeMicroseconds(1250);
       Serial.println("Main LEFT");
     }
     else
